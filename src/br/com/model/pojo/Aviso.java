@@ -7,20 +7,11 @@ import java.util.Date;
  */
 public class Aviso {
     private Long id;
-    private String titulo;
     private String mensagem;
     private Date data;
     private String autor;
 
     public Aviso() {}
-
-    public Aviso(Long id, String titulo, String mensagem, Date data, String autor) {
-        this.id = id;
-        this.titulo = titulo;
-        this.mensagem = mensagem;
-        this.data = data;
-        this.autor = autor;
-    }
 
     public Long getId() {
         return id;
@@ -28,14 +19,6 @@ public class Aviso {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     public String getMensagem() {
@@ -81,7 +64,6 @@ public class Aviso {
     public String toString() {
         return "Aviso{" +
                 "id=" + id +
-                ", titulo='" + titulo + '\'' +
                 ", mensagem='" + mensagem + '\'' +
                 ", data=" + data +
                 ", autor='" + autor + '\'' +

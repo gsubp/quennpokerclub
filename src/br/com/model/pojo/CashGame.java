@@ -7,19 +7,16 @@ import java.util.List;
  */
 public class CashGame {
     private Long id;
-    private String buyin;
-    private String jogo;
-    private int qnt_jogadores;
+    private String titulo;
+    private double buyin;
+    private String blinds;
+    private int tamanhoMesa;
+    private String tipoJogo;
     private List<Jogador> jogadores;
 
-    public CashGame() {
-    }
 
-    public CashGame(Long id, String buyin, String jogo, int qnt_jogadores) {
-        this.id = id;
-        this.buyin = buyin;
-        this.jogo = jogo;
-        this.qnt_jogadores = qnt_jogadores;
+
+    public CashGame() {
     }
 
     public Long getId() {
@@ -30,28 +27,44 @@ public class CashGame {
         this.id = id;
     }
 
-    public String getBuyin() {
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public double getBuyin() {
         return buyin;
     }
 
-    public void setBuyin(String buyin) {
+    public void setBuyin(double buyin) {
         this.buyin = buyin;
     }
 
-    public String getJogo() {
-        return jogo;
+    public String getBlinds() {
+        return blinds;
     }
 
-    public void setJogo(String jogo) {
-        this.jogo = jogo;
+    public void setBlinds(String blinds) {
+        this.blinds = blinds;
     }
 
-    public int getQnt_jogadores() {
-        return qnt_jogadores;
+    public int getTamanhoMesa() {
+        return tamanhoMesa;
     }
 
-    public void setQnt_jogadores(int qnt_jogadores) {
-        this.qnt_jogadores = qnt_jogadores;
+    public void setTamanhoMesa(int tamanhoMesa) {
+        this.tamanhoMesa = tamanhoMesa;
+    }
+
+    public String getTipoJogo() {
+        return tipoJogo;
+    }
+
+    public void setTipoJogo(String tipoJogo) {
+        this.tipoJogo = tipoJogo;
     }
 
     public List<Jogador> getJogadores() {
@@ -60,30 +73,5 @@ public class CashGame {
 
     public void setJogadores(List<Jogador> jogadores) {
         this.jogadores = jogadores;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        CashGame cashGame = (CashGame) o;
-
-        return id.equals(cashGame.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "CashGame{" +
-                "id=" + id +
-                ", buyin='" + buyin + '\'' +
-                ", jogo='" + jogo + '\'' +
-                ", qnt_jogadores=" + qnt_jogadores +
-                '}';
     }
 }

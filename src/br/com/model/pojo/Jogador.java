@@ -6,15 +6,10 @@ package br.com.model.pojo;
 public class Jogador {
     private Long id;
     private String nome;
+    private int pontos;
     private String telefone;
 
     public Jogador() {
-    }
-
-    public Jogador(Long od, String nome, String telefone) {
-        this.id = od;
-        this.nome = nome;
-        this.telefone = telefone;
     }
 
     public Long getId() {
@@ -41,27 +36,11 @@ public class Jogador {
         this.telefone = telefone;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Jogador jogador = (Jogador) o;
-
-        return id.equals(jogador.id);
+    public int getPontos() {
+        return pontos;
     }
 
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "Jogador{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", telefone='" + telefone + '\'' +
-                '}';
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
     }
 }
