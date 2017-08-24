@@ -9,6 +9,16 @@ import java.util.List;
  * Created by guilh on 06/07/2017.
  */
 public class TorneioPostgreDAO extends TorneioDAO{
+    private static TorneioPostgreDAO instance;
+
+    private TorneioPostgreDAO(){}
+
+    public static TorneioPostgreDAO getInstance() {
+        if(instance == null)
+            instance = new TorneioPostgreDAO();
+        return instance;
+    }
+
     @Override
     public void inset(TorneioVO torneio) {
 

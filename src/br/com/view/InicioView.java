@@ -6,14 +6,13 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class InicioView extends JFrame{
-    private JTabbedPane tabbedPane1;
     private JButton novoAvisoButton;
     private JTextArea avisoArea;
     private JTable classificacaoTable;
     private JTable cashTable;
     private JTable torneioTable;
     private JButton relatoriosButton;
-    private JButton opçõesButton;
+    private JButton perfilButton;
     private JPanel rootPanel;
     private JTextField loginField;
     private JPasswordField senhaField;
@@ -21,6 +20,8 @@ public class InicioView extends JFrame{
     private JButton logarButton;
     private JPanel loginPanel;
     private JButton sairButton;
+    private JButton novoPorAquiButton;
+    private JButton loginButton;
 
     public InicioView(){
         pack();
@@ -28,6 +29,8 @@ public class InicioView extends JFrame{
         setTitle("Queen's Poker Club");
         setSize(800,600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        InicioViewControl control = new InicioViewControl(this);
 
         /*
             Definir model das tabelas
@@ -59,7 +62,8 @@ public class InicioView extends JFrame{
         classficacaoModel.addColumn("Pontos");
         classificacaoTable.setModel(classficacaoModel);
 
-        sairButton.addActionListener(new InicioViewControl(this));
+        sairButton.addActionListener(control);
+        logarButton.addActionListener(control);
 
         setVisible(true);
 
@@ -89,8 +93,8 @@ public class InicioView extends JFrame{
         return relatoriosButton;
     }
 
-    public JButton getOpçõesButton() {
-        return opçõesButton;
+    public JButton getPerfilButton() {
+        return perfilButton;
     }
 
     public JButton getSairButton() {
@@ -113,7 +117,11 @@ public class InicioView extends JFrame{
         return cancelarButton;
     }
 
-    public static void main(String[] args) {
-        new InicioView();
+    public JPanel getLoginPanel() {
+        return loginPanel;
+    }
+
+    public JButton getNovoPorAquiButton() {
+        return novoPorAquiButton;
     }
 }

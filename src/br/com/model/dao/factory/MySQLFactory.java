@@ -10,25 +10,37 @@ import br.com.model.dao.mysql.JogadorMySQLDAO;
 import br.com.model.dao.mysql.TorneioMySQLDAO;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class MySQLFactory extends DAOFactory{
+    private static final String USER = "root";
+    private static final String PASS = "root";
+    private static final String URL = "jdbc:mysql://localhost:3306/queenpokerclub";
+    private static Connection connection;
+
+    public static synchronized Connection getConnection() throws Exception{
+        if(connection == null)
+            connection = DriverManager.getConnection(URL,USER,PASS);
+        return connection;
+    }
+
     @Override
     public AvisoDAO createAvisoDAO() {
-        return new AvisoMySQLDAO();
+        return AvisoMySQLDAO.getInstance();
     }
 
     @Override
     public CashGameDAO createCashGameDAO() {
-        return new CashGameMySQLDAO();
+        return CashGameMySQLDAO.getInstance();
     }
 
     @Override
     public JogadorDAO createJogadorDAO() {
-        return new JogadorMySQLDAO();
+        return JogadorMySQLDAO.getInstance();
     }
 
     @Override
     public TorneioDAO createTorneioDAO() {
-        return new TorneioMySQLDAO();
+        return TorneioMySQLDAO.getInstance();
     }
 }

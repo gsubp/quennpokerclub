@@ -1,14 +1,24 @@
 package br.com.model.dao.mysql;
-
 import br.com.model.dao.CashGameDAO;
 import br.com.model.vo.CashGameVO;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.List;
 
 /**
  * Created by guilh on 06/07/2017.
  */
 public class CashGameMySQLDAO extends CashGameDAO{
+    private static CashGameMySQLDAO instance;
+
+    private CashGameMySQLDAO(){}
+
+    public static CashGameMySQLDAO getInstance() {
+        if(instance == null)
+            instance = new CashGameMySQLDAO();
+        return instance;
+    }
     @Override
     public void insert(CashGameVO cashGame) {
 

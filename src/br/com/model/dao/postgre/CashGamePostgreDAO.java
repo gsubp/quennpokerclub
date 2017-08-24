@@ -1,5 +1,6 @@
 package br.com.model.dao.postgre;
 
+import br.com.model.dao.AvisoDAO;
 import br.com.model.dao.CashGameDAO;
 import br.com.model.vo.CashGameVO;
 
@@ -9,6 +10,15 @@ import java.util.List;
  * Created by guilh on 06/07/2017.
  */
 public class CashGamePostgreDAO extends CashGameDAO{
+    private static CashGamePostgreDAO instance;
+
+    private CashGamePostgreDAO(){}
+
+    public static CashGamePostgreDAO getInstance() {
+        if(instance == null)
+            instance = new CashGamePostgreDAO();
+        return instance;
+    }
     @Override
     public void insert(CashGameVO cashGame) {
 

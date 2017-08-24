@@ -6,8 +6,12 @@ package br.com.model.pojo;
 public class Jogador {
     private Long id;
     private String nome;
+    private String cpf;
     private int pontos;
     private String telefone;
+    private String login;
+    private String senha;
+    private boolean isAdmin;
 
     public Jogador() {
     }
@@ -42,5 +46,37 @@ public class Jogador {
 
     public void setPontos(int pontos) {
         this.pontos = pontos;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }
