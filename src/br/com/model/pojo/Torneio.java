@@ -1,6 +1,7 @@
 package br.com.model.pojo;
 
-import java.util.Date;
+import br.com.model.vo.JogadorVO;
+
 import java.util.List;
 
 /**
@@ -14,7 +15,8 @@ public class Torneio {
     private boolean addon;
     private String estrutura;
     private String inicio;
-    private List<Jogador> jogadores;
+    private JogadoresProxy proxy;
+    private List<JogadorVO> jogadores;
 
     public Torneio(){}
 
@@ -74,13 +76,14 @@ public class Torneio {
         this.inicio = inicio;
     }
 
-    public List<Jogador> getJogadores() {
+    public List<JogadorVO> getJogadores() throws Exception {
+        if(jogadores == null) {
+            proxy = new JogadoresProxy(this.id);
+            this.jogadores = proxy.getJogadores();
+        }
         return jogadores;
     }
 
-    public void setJogadores(List<Jogador> jogadores) {
-        this.jogadores = jogadores;
-    }
 
 
 }

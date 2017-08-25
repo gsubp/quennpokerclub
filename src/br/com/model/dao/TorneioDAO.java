@@ -1,6 +1,6 @@
 package br.com.model.dao;
 
-import br.com.model.pojo.Torneio;
+import br.com.model.vo.JogadorVO;
 import br.com.model.vo.TorneioVO;
 
 import java.util.List;
@@ -14,4 +14,6 @@ public abstract class TorneioDAO {
     public abstract void remove(Long id);
     public abstract TorneioVO select(Long id);
     public abstract List<TorneioVO> list() throws Exception;
+
+    public abstract List<JogadorVO> loadJogadores(Long linkTorneio) throws Exception;
 }

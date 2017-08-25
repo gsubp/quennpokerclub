@@ -1,6 +1,7 @@
 package br.com.model.dao.postgre;
 
 import br.com.model.dao.TorneioDAO;
+import br.com.model.vo.JogadorVO;
 import br.com.model.vo.TorneioVO;
 
 import java.util.List;
@@ -41,6 +42,11 @@ public class TorneioPostgreDAO extends TorneioDAO{
 
     @Override
     public List<TorneioVO> list() {
+        return null;
+    }
+
+    @Override
+    public List<JogadorVO> loadJogadores(Long linkTorneio) throws Exception {
         return null;
     }
 }

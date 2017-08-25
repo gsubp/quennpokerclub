@@ -60,4 +60,8 @@ public class FachadaDAO {
     public static void novoTorneio(TorneioVO torneio) throws Exception {
         DAOFactory.getFacorty(getBanco()).createTorneioDAO().inset(torneio);
     }
+
+    public static List<JogadorVO> getJogadoresTorneio(Long linkTorneio) throws Exception {
+        return DAOFactory.getFacorty(getBanco()).createTorneioDAO().loadJogadores(linkTorneio);
+    }
 }

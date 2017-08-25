@@ -28,7 +28,7 @@ public class AvisoMySQLDAO extends AvisoDAO{
     @Override
     public void insert(AvisoVO aviso) throws Exception{
         PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("insert into aviso (mensagem, " +
-                "data, autor) value (?, ?, ?)");
+                "autor, data) value (?, ?, ?)");
         statement.setString(1, aviso.getMensagem());
         statement.setString(2, aviso.getData());
         statement.setString(3, aviso.getAutor());

@@ -42,8 +42,6 @@ public class InicioControl implements ActionListener, Runnable{
                     view.getNovoAvisoButton().setVisible(true);
                     view.getNovoCashGameButton().setVisible(true);
                     view.getNovoTorneioButton().setVisible(true);
-                    view.getExcluirCashGameButton().setVisible(true);
-                    view.getExcluirTorneioButton().setVisible(true);
                 }
                 thread = new Thread(this);
                 thread.start();
@@ -68,8 +66,6 @@ public class InicioControl implements ActionListener, Runnable{
             view.getNovoAvisoButton().setVisible(false);
             view.getNovoCashGameButton().setVisible(false);
             view.getNovoTorneioButton().setVisible(false);
-            view.getExcluirCashGameButton().setVisible(false);
-            view.getExcluirTorneioButton().setVisible(false);
             thread.stop();
         }
         if(e.getSource() == view.getNovoTorneioButton())
@@ -151,7 +147,6 @@ public class InicioControl implements ActionListener, Runnable{
                 updateTorneiosTable();
                 updateCashGamesTable();
                 updateClassificacaoTable();
-                System.out.println("thread");
                 Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();

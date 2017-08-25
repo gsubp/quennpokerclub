@@ -2,12 +2,10 @@ package br.com.model.dao.mysql;
 
 import br.com.model.dao.TorneioDAO;
 import br.com.model.dao.factory.MySQLFactory;
-import br.com.model.pojo.Torneio;
-import br.com.model.vo.AvisoVO;
+import br.com.model.vo.JogadorVO;
 import br.com.model.vo.TorneioVO;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -78,5 +76,22 @@ public class TorneioMySQLDAO extends TorneioDAO{
             torneios.add(torneio);
         }
         return torneios;
+    }
+
+    @Override
+    public List<JogadorVO> loadJogadores(Long linkTorneio) throws Exception {
+        List<JogadorVO> jogadores = new ArrayList<>();
+        PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("select * from jogador j " +
+                "join jogador_torneio jt on jt.id_torneio = j.id " +
+                "join jogador j on jt.id_jogador = j.id");
+        ResultSet rs = statement.executeQuery();
+        while(rs.next()){
+            JogadorVO jogador = new JogadorVO();
+            jogador.setId(rs.getLong("id"));
+            jogadores.add(jogador);
+        }
+        rs.close();
+        statement.close();
+        return jogadores;
     }
 }
