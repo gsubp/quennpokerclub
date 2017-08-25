@@ -5,10 +5,7 @@ import br.com.model.pojo.Aviso;
 import br.com.model.pojo.CashGame;
 import br.com.model.pojo.Jogador;
 import br.com.model.pojo.Torneio;
-import br.com.view.InicioView;
-import br.com.view.NovoAvisoView;
-import br.com.view.NovoCashView;
-import br.com.view.NovoTorneioView;
+import br.com.view.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -74,6 +71,18 @@ public class InicioControl implements ActionListener, Runnable{
             new NovoCashView();
         if(e.getSource() == view.getNovoAvisoButton())
             new NovoAvisoView(jogador);
+        if(e.getSource() == view.getVer_torneioItem()) {
+            Long idTorneio = (Long) view.getTorneioTable().getValueAt(view.getTorneioTable(). getSelectedRow(), 0);
+            try {
+                new TorneioView(FachadaDAO.buscaTorneioID(idTorneio), jogador);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+        if(e.getSource() == view.getInscrever_torneioItem()){
+            Long idTorneio = (Long) view.getTorneioTable().getValueAt(view.getTorneioTable(). getSelectedRow(), 0);
+            FachadaDAO.jogadorInscreve(jogador.getId(), idTorneio);
+        }
 
     }
 

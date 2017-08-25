@@ -23,7 +23,7 @@ public class NovoTorneioControl implements ActionListener {
         torneio.setRebuy(view.getReBuyCheckBox().isSelected());
         torneio.setAddon(view.getAddOnCheckBox().isSelected());
         torneio.setEstrutura(view.getEstruturaArea().getText());
-        torneio.setInicio(view.getDataField().getText() + " " + view.getHoraField().getToolTipText());
+        torneio.setInicio(view.getDataField().getText() + " " + view.getHoraField().getText());
         try {
             FachadaDAO.novoTorneio(torneio);
             JOptionPane.showMessageDialog(null, "Torneio criado");

@@ -6,6 +6,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class InicioView extends JFrame{
+    private final JMenuItem ver_torneioItem;
+    private final JMenuItem inscrever_torneioItem;
     private JButton novoAvisoButton;
     private JTextArea avisoArea;
     private JTable classificacaoTable;
@@ -61,6 +63,12 @@ public class InicioView extends JFrame{
         classficacaoModel.addColumn("Pontos");
         classificacaoTable.setModel(classficacaoModel);
 
+        JPopupMenu torneioMenu = new JPopupMenu();
+        ver_torneioItem = new JMenuItem("Ver Torneio");
+        inscrever_torneioItem = new JMenuItem("Inscrever-se");
+        torneioMenu.add(ver_torneioItem);
+        torneioMenu.add(inscrever_torneioItem);
+
         sairButton.addActionListener(control);
         logarButton.addActionListener(control);
         loginButton.addActionListener(control);
@@ -69,6 +77,8 @@ public class InicioView extends JFrame{
         novoAvisoButton.addActionListener(control);
         novoCashGameButton.addActionListener(control);
         novoTorneioButton.addActionListener(control);
+        ver_torneioItem.addActionListener(control);
+        inscrever_torneioItem.addActionListener(control);
 
         setVisible(true);
 
@@ -136,5 +146,13 @@ public class InicioView extends JFrame{
 
     public JButton getNovoCashGameButton() {
         return novoCashGameButton;
+    }
+
+    public JMenuItem getVer_torneioItem() {
+        return ver_torneioItem;
+    }
+
+    public JMenuItem getInscrever_torneioItem() {
+        return inscrever_torneioItem;
     }
 }

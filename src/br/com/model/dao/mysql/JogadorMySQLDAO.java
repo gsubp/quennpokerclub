@@ -26,8 +26,18 @@ public class JogadorMySQLDAO extends JogadorDAO{
     }
 
     @Override
-    public void insert(JogadorVO jogador) {
-
+    public void insert(JogadorVO jogador) throws Exception {
+        PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("insert into jogador (nome, " +
+                "cpf, pontos, telefone, login, senha, is_admin) value (?, ?, ?, ?, ?, ?, ?)");
+        statement.setString(1, jogador.getNome());
+        statement.setString(2, jogador.getCpf());
+        statement.setInt(3, jogador.getPontos());
+        statement.setString(4, jogador.getTelefone());
+        statement.setString(5, jogador.getLogin());
+        statement.setString(6, jogador.getSenha());
+        statement.setBoolean(7, jogador.isAdmin());
+        statement.executeUpdate();
+        statement.close();
     }
 
     @Override
@@ -112,4 +122,16 @@ public class JogadorMySQLDAO extends JogadorDAO{
         statement.close();
         return jogadores;
     }
+
+    @Override
+    public void register(Long idJogador, Long idTorneio) throws Exception {
+        PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("insert into jogador_torneio " +
+                "(id_jogador, id_torneio value (?, ?)");
+        statement.setLong(1, idJogador);
+        statement.setLong(1, idTorneio);
+        statement.executeUpdate();
+        statement.close();
+    }
+
+
 }

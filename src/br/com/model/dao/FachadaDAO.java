@@ -1,6 +1,7 @@
 package br.com.model.dao;
 
 import br.com.model.dao.factory.DAOFactory;
+import br.com.model.pojo.Torneio;
 import br.com.model.vo.AvisoVO;
 import br.com.model.vo.CashGameVO;
 import br.com.model.vo.JogadorVO;
@@ -63,5 +64,13 @@ public class FachadaDAO {
 
     public static List<JogadorVO> getJogadoresTorneio(Long linkTorneio) throws Exception {
         return DAOFactory.getFacorty(getBanco()).createTorneioDAO().loadJogadores(linkTorneio);
+    }
+
+    public static TorneioVO buscaTorneioID(Long id) {
+        return DAOFactory.getFacorty(getBanco()).createTorneioDAO().select(id);
+    }
+
+    public static void jogadorInscreve(Long idJogador, Long idTorneio) {
+        DAOFactory.getFacorty(getBanco()).createJogadorDAO().register(idJogador, idTorneio);
     }
 }
