@@ -27,10 +27,10 @@ public class AvisoMySQLDAO extends AvisoDAO{
 
     @Override
     public void insert(AvisoVO aviso) throws Exception{
-        PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("insert into aviso " +
-                "value (?, ?, ?)");
+        PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("insert into aviso (mensagem, " +
+                "data, autor) value (?, ?, ?)");
         statement.setString(1, aviso.getMensagem());
-        statement.setDate(2, (Date) aviso.getData());
+        statement.setString(2, aviso.getData());
         statement.setString(3, aviso.getAutor());
         statement.executeUpdate();
         statement.close();
@@ -41,7 +41,7 @@ public class AvisoMySQLDAO extends AvisoDAO{
         PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("update aviso set mensagem = ?," +
                 "data = ?, autor = ? where id = ?");
         statement.setString(1, aviso.getMensagem());
-        statement.setDate(2, (Date) aviso.getData());
+        statement.setString(2, aviso.getData());
         statement.setString(3, aviso.getAutor());
         statement.setLong(4, aviso.getId());
         statement.executeUpdate();
@@ -64,9 +64,9 @@ public class AvisoMySQLDAO extends AvisoDAO{
         ResultSet rs = statement.executeQuery();
         while(rs.next()){
             aviso.setId(rs.getLong("id"));
-            aviso.setMensagem(rs.getString("mesnsagem"));
+            aviso.setMensagem(rs.getString("mensagem"));
+            aviso.setData(rs.getString("data"));
             aviso.setAutor(rs.getString("autor"));
-            aviso.setData(rs.getDate("data"));
         }
         return aviso;
     }
@@ -80,9 +80,9 @@ public class AvisoMySQLDAO extends AvisoDAO{
         while(rs.next()){
             AvisoVO aviso = new AvisoVO();
             aviso.setId(rs.getLong("id"));
-            aviso.setMensagem(rs.getString("mesnsagem"));
+            aviso.setMensagem(rs.getString("mensagem"));
+            aviso.setData(rs.getString("data"));
             aviso.setAutor(rs.getString("autor"));
-            aviso.setData(rs.getDate("data"));
             avisos.add(aviso);
         }
         return avisos;

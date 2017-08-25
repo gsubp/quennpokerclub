@@ -9,7 +9,7 @@ import java.util.List;
  * Created by guilh on 06/07/2017.
  */
 public abstract class TorneioDAO {
-    public abstract void inset(TorneioVO torneio);
+    public abstract void inset(TorneioVO torneio) throws Exception;
     public abstract void update(TorneioVO torneio);
     public abstract void remove(Long id);
     public abstract TorneioVO select(Long id);

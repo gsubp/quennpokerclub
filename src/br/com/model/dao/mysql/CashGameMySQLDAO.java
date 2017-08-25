@@ -4,10 +4,7 @@ import br.com.model.dao.factory.MySQLFactory;
 import br.com.model.vo.AvisoVO;
 import br.com.model.vo.CashGameVO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +22,17 @@ public class CashGameMySQLDAO extends CashGameDAO{
         return instance;
     }
     @Override
-    public void insert(CashGameVO cashGame) {
-
+    public void insert(CashGameVO cashGame) throws Exception{
+        PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("insert into cash_game (titulo, " +
+                "buyin, blinds, tamanho_mesa, tipo_jogo)" +
+                "value (?, ?, ?, ?, ?)");
+        statement.setString(1, cashGame.getTitulo());
+        statement.setDouble(2, cashGame.getBuyin());
+        statement.setString(3, cashGame.getBlinds());
+        statement.setInt(4, cashGame.getTamanhoMesa());
+        statement.setString(5, cashGame.getTipoJogo());
+        statement.executeUpdate();
+        statement.close();
     }
 
     @Override

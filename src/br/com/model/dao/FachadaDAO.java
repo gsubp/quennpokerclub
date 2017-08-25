@@ -1,13 +1,12 @@
 package br.com.model.dao;
 
 import br.com.model.dao.factory.DAOFactory;
-import br.com.model.pojo.CashGame;
-import br.com.model.pojo.Jogador;
 import br.com.model.vo.AvisoVO;
 import br.com.model.vo.CashGameVO;
 import br.com.model.vo.JogadorVO;
 import br.com.model.vo.TorneioVO;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,5 +46,18 @@ public class FachadaDAO {
 
     public static JogadorVO getJogador(Long id) throws Exception {
         return DAOFactory.getFacorty(getBanco()).createJogadorDAO().select(id);
+    }
+
+    public static void novoAviso(AvisoVO aviso) throws Exception {
+        aviso.setData(new Date().toString());
+        DAOFactory.getFacorty(getBanco()).createAvisoDAO().insert(aviso);
+    }
+
+    public static void novoCash(CashGameVO cash) throws Exception {
+        DAOFactory.getFacorty(getBanco()).createCashGameDAO().insert(cash);
+    }
+
+    public static void novoTorneio(TorneioVO torneio) throws Exception {
+        DAOFactory.getFacorty(getBanco()).createTorneioDAO().inset(torneio);
     }
 }

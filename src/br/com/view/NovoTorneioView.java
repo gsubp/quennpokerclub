@@ -6,7 +6,6 @@ import javax.swing.*;
 
 public class NovoTorneioView extends JFrame{
     private JTextField tituloField;
-    private JSpinner buyinSpinner;
     private JCheckBox reBuyCheckBox;
     private JCheckBox addOnCheckBox;
     private JFormattedTextField dataField;
@@ -14,12 +13,13 @@ public class NovoTorneioView extends JFrame{
     private JPanel rootPanel;
     private JTextArea estruturaArea;
     private JButton salvarButton;
+    private JTextField buyinField;
 
     public NovoTorneioView(){
         pack();
         setContentPane(rootPanel);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setSize(475,300);
+        setSize(475,400);
 
         salvarButton.addActionListener(new NovoTorneioControl(this));
         setVisible(true);
@@ -30,8 +30,8 @@ public class NovoTorneioView extends JFrame{
         return tituloField;
     }
 
-    public JSpinner getBuyinSpinner() {
-        return buyinSpinner;
+    public JTextField getBuyinField() {
+        return buyinField;
     }
 
     public JCheckBox getReBuyCheckBox() {

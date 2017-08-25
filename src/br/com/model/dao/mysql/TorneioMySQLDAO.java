@@ -31,15 +31,18 @@ public class TorneioMySQLDAO extends TorneioDAO{
         return instance;
     }
 
-    private static synchronized Connection getConnection() throws Exception{
-        if(connection != null)
-            connection = DriverManager.getConnection(URL,USER,PASS);
-        return connection;
-    }
-
     @Override
-    public void inset(TorneioVO torneio) {
-
+    public void inset(TorneioVO torneio) throws Exception {
+        PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("insert into torneio (titulo, " +
+                "buyin, rebuy, addon, estrutura, data_inicio) value (?, ?, ?, ?, ?, ?)");
+        statement.setString(1, torneio.getTitulo());
+        statement.setDouble(2, torneio.getBuyin());
+        statement.setBoolean(3, torneio.isRebuy());
+        statement.setBoolean(4, torneio.isAddon());
+        statement.setString(5, torneio.getEstrutura());
+        statement.setString(6, torneio.getInicio());
+        statement.executeUpdate();
+        statement.close();
     }
 
     @Override
@@ -71,7 +74,7 @@ public class TorneioMySQLDAO extends TorneioDAO{
             torneio.setBuyin(rs.getDouble("buyin"));
             torneio.setRebuy(rs.getBoolean("rebuy"));
             torneio.setAddon(rs.getBoolean("addon"));
-            torneio.setInicio(rs.getDate("data_inicio"));
+            torneio.setInicio(rs.getString("data_inicio"));
             torneios.add(torneio);
         }
         return torneios;

@@ -13,7 +13,7 @@ public class Torneio {
     private boolean rebuy;
     private boolean addon;
     private String estrutura;
-    private Date inicio;
+    private String inicio;
     private List<Jogador> jogadores;
 
     public Torneio(){}
@@ -66,11 +66,11 @@ public class Torneio {
         this.estrutura = estrutura;
     }
 
-    public Date getInicio() {
+    public String getInicio() {
         return inicio;
     }
 
-    public void setInicio(Date inicio) {
+    public void setInicio(String inicio) {
         this.inicio = inicio;
     }
 

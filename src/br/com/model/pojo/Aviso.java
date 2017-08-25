@@ -8,7 +8,7 @@ import java.util.Date;
 public class Aviso {
     private Long id;
     private String mensagem;
-    private Date data;
+    private String data;
     private String autor;
 
     public Aviso() {}
@@ -29,11 +29,11 @@ public class Aviso {
         this.mensagem = mensagem;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

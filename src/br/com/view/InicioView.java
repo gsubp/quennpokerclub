@@ -11,7 +11,6 @@ public class InicioView extends JFrame{
     private JTable classificacaoTable;
     private JTable cashTable;
     private JTable torneioTable;
-    private JButton relatoriosButton;
     private JButton perfilButton;
     private JPanel rootPanel;
     private JTextField loginField;
@@ -22,11 +21,8 @@ public class InicioView extends JFrame{
     private JButton sairButton;
     private JButton novoPorAquiButton;
     private JButton loginButton;
-    private JButton novoAvisoButton1;
     private JButton novoTorneioButton;
-    private JButton excluirTorneioButton;
     private JButton novoCashGameButton;
-    private JButton excluirCashGameButton;
 
     public InicioView(){
         pack();
@@ -69,6 +65,10 @@ public class InicioView extends JFrame{
         logarButton.addActionListener(control);
         loginButton.addActionListener(control);
         cancelarButton.addActionListener(control);
+        novoPorAquiButton.addActionListener(control);
+        novoAvisoButton.addActionListener(control);
+        novoCashGameButton.addActionListener(control);
+        novoTorneioButton.addActionListener(control);
 
         setVisible(true);
 
@@ -92,10 +92,6 @@ public class InicioView extends JFrame{
 
     public JTable getTorneioTable() {
         return torneioTable;
-    }
-
-    public JButton getRelatoriosButton() {
-        return relatoriosButton;
     }
 
     public JButton getPerfilButton() {
@@ -134,23 +130,11 @@ public class InicioView extends JFrame{
         return loginButton;
     }
 
-    public JButton getNovoAvisoButton1() {
-        return novoAvisoButton1;
-    }
-
     public JButton getNovoTorneioButton() {
         return novoTorneioButton;
     }
 
-    public JButton getExcluirTorneioButton() {
-        return excluirTorneioButton;
-    }
-
     public JButton getNovoCashGameButton() {
         return novoCashGameButton;
-    }
-
-    public JButton getExcluirCashGameButton() {
-        return excluirCashGameButton;
     }
 }

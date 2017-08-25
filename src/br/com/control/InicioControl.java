@@ -6,6 +6,9 @@ import br.com.model.pojo.CashGame;
 import br.com.model.pojo.Jogador;
 import br.com.model.pojo.Torneio;
 import br.com.view.InicioView;
+import br.com.view.NovoAvisoView;
+import br.com.view.NovoCashView;
+import br.com.view.NovoTorneioView;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -69,6 +72,12 @@ public class InicioControl implements ActionListener, Runnable{
             view.getExcluirTorneioButton().setVisible(false);
             thread.stop();
         }
+        if(e.getSource() == view.getNovoTorneioButton())
+            new NovoTorneioView();
+        if(e.getSource() == view.getNovoCashGameButton())
+            new NovoCashView();
+        if(e.getSource() == view.getNovoAvisoButton())
+            new NovoAvisoView(jogador);
 
     }
 
