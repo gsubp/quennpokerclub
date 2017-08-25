@@ -12,5 +12,5 @@ public abstract class CashGameDAO {
     public abstract void update(CashGameVO cashGame);
     public abstract void remove(Long id);
     public abstract CashGameVO selectById(Long id);
-    public abstract List<CashGameVO> list();
+    public abstract List<CashGameVO> list() throws Exception;
 }

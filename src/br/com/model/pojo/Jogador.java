@@ -1,5 +1,10 @@
 package br.com.model.pojo;
 
+import br.com.model.dao.FachadaDAO;
+import br.com.model.dao.factory.DAOFactory;
+import br.com.model.vo.JogadorVO;
+import jdk.nashorn.internal.scripts.JO;
+
 /**
  * Created by guilh on 06/07/2017.
  */
@@ -17,15 +22,25 @@ public class Jogador {
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNome() throws Exception {
+        if(this.nome == null){
+           JogadorVO jogador =  FachadaDAO.getJogador(this.id);
+           this.nome = jogador.getNome();
+           this.cpf = jogador.getCpf();
+           this.pontos = jogador.getPontos();
+           this.telefone = jogador.getTelefone();
+           this.login = jogador.getLogin();
+           this.senha = jogador.getSenha();
+           this.isAdmin = jogador.isAdmin();
+        }
+        return this.nome;
     }
 
     public void setNome(String nome) {
@@ -33,7 +48,7 @@ public class Jogador {
     }
 
     public String getTelefone() {
-        return telefone;
+        return this.telefone;
     }
 
     public void setTelefone(String telefone) {
@@ -41,7 +56,7 @@ public class Jogador {
     }
 
     public int getPontos() {
-        return pontos;
+        return this.pontos;
     }
 
     public void setPontos(int pontos) {
@@ -49,7 +64,7 @@ public class Jogador {
     }
 
     public String getLogin() {
-        return login;
+        return this.login;
     }
 
     public void setLogin(String login) {
@@ -57,7 +72,7 @@ public class Jogador {
     }
 
     public String getSenha() {
-        return senha;
+        return this.senha;
     }
 
     public void setSenha(String senha) {
@@ -65,7 +80,7 @@ public class Jogador {
     }
 
     public String getCpf() {
-        return cpf;
+        return this.cpf;
     }
 
     public void setCpf(String cpf) {
@@ -73,10 +88,10 @@ public class Jogador {
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return this.isAdmin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.isAdmin = admin;
     }
 }

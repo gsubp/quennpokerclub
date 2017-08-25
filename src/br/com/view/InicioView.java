@@ -1,6 +1,6 @@
 package br.com.view;
 
-import br.com.control.InicioViewControl;
+import br.com.control.InicioControl;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +22,11 @@ public class InicioView extends JFrame{
     private JButton sairButton;
     private JButton novoPorAquiButton;
     private JButton loginButton;
+    private JButton novoAvisoButton1;
+    private JButton novoTorneioButton;
+    private JButton excluirTorneioButton;
+    private JButton novoCashGameButton;
+    private JButton excluirCashGameButton;
 
     public InicioView(){
         pack();
@@ -30,7 +35,7 @@ public class InicioView extends JFrame{
         setSize(800,600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        InicioViewControl control = new InicioViewControl(this);
+        InicioControl control = new InicioControl(this);
 
         /*
             Definir model das tabelas
@@ -43,7 +48,6 @@ public class InicioView extends JFrame{
         torneioModel.addColumn("Addon");
         torneioModel.addColumn("Estrutura");
         torneioModel.addColumn("Horário de Início");
-        torneioModel.addColumn("Jogadores Inscritos");
         torneioTable.setModel(torneioModel);
 
         DefaultTableModel cashModel = new DefaultTableModel();
@@ -53,7 +57,6 @@ public class InicioView extends JFrame{
         cashModel.addColumn("Blinds");
         cashModel.addColumn("Tipo de Jogo");
         cashModel.addColumn("Tamanho da mesa");
-        cashModel.addColumn("Jogadores Sentados");
         cashTable.setModel(cashModel);
 
         DefaultTableModel classficacaoModel = new DefaultTableModel();
@@ -64,6 +67,8 @@ public class InicioView extends JFrame{
 
         sairButton.addActionListener(control);
         logarButton.addActionListener(control);
+        loginButton.addActionListener(control);
+        cancelarButton.addActionListener(control);
 
         setVisible(true);
 
@@ -123,5 +128,29 @@ public class InicioView extends JFrame{
 
     public JButton getNovoPorAquiButton() {
         return novoPorAquiButton;
+    }
+
+    public JButton getLoginButton() {
+        return loginButton;
+    }
+
+    public JButton getNovoAvisoButton1() {
+        return novoAvisoButton1;
+    }
+
+    public JButton getNovoTorneioButton() {
+        return novoTorneioButton;
+    }
+
+    public JButton getExcluirTorneioButton() {
+        return excluirTorneioButton;
+    }
+
+    public JButton getNovoCashGameButton() {
+        return novoCashGameButton;
+    }
+
+    public JButton getExcluirCashGameButton() {
+        return excluirCashGameButton;
     }
 }

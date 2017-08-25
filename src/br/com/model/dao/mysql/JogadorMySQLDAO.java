@@ -88,10 +88,28 @@ public class JogadorMySQLDAO extends JogadorDAO{
         statement.setString(1, login);
         statement.setString(2, senha);
         ResultSet rs = statement.executeQuery();
-        while(rs.next())
+        while(rs.next()){
             jogador.setId(rs.getLong("id"));
+            jogador.setAdmin(rs.getBoolean("is_admin"));
+        }
         rs.close();
         statement.close();
         return jogador;
+    }
+
+    @Override
+    public List<JogadorVO> listClassificacao() throws Exception{
+        List<JogadorVO> jogadores = new ArrayList<>();
+        PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("select * from jogador " +
+                "order by pontos desc");
+        ResultSet rs = statement.executeQuery();
+        while(rs.next()){
+            JogadorVO jogador = new JogadorVO();
+            jogador.setId(rs.getLong("id"));
+            jogadores.add(jogador);
+        }
+        rs.close();
+        statement.close();
+        return jogadores;
     }
 }

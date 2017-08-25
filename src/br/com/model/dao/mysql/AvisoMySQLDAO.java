@@ -74,7 +74,8 @@ public class AvisoMySQLDAO extends AvisoDAO{
     @Override
     public List<AvisoVO> list() throws Exception{
         List<AvisoVO> avisos = new ArrayList<>();
-        PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("select * from aviso");
+        PreparedStatement statement = MySQLFactory.getConnection().prepareStatement("select * from aviso " +
+                "order by data desc");
         ResultSet rs = statement.executeQuery();
         while(rs.next()){
             AvisoVO aviso = new AvisoVO();

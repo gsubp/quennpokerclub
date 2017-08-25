@@ -13,5 +13,5 @@ public abstract class TorneioDAO {
     public abstract void update(TorneioVO torneio);
     public abstract void remove(Long id);
     public abstract TorneioVO select(Long id);
-    public abstract List<TorneioVO> list();
+    public abstract List<TorneioVO> list() throws Exception;
 }

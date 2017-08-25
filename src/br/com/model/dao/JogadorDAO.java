@@ -14,4 +14,5 @@ public abstract class JogadorDAO {
     public abstract JogadorVO select(Long id) throws Exception;
     public abstract List<JogadorVO> list() throws Exception;
     public abstract JogadorVO login(String login, String senha) throws Exception;
+    public abstract List<JogadorVO> listClassificacao() throws Exception;
 }

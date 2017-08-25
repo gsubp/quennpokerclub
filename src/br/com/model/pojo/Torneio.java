@@ -10,8 +10,8 @@ public class Torneio {
     private Long id;
     private String titulo;
     private double buyin;
-    private int rebuy;
-    private int addon;
+    private boolean rebuy;
+    private boolean addon;
     private String estrutura;
     private Date inicio;
     private List<Jogador> jogadores;
@@ -42,19 +42,19 @@ public class Torneio {
         this.buyin = buyin;
     }
 
-    public int getRebuy() {
+    public boolean isRebuy() {
         return rebuy;
     }
 
-    public void setRebuy(int rebuy) {
+    public void setRebuy(boolean rebuy) {
         this.rebuy = rebuy;
     }
 
-    public int getAddon() {
+    public boolean isAddon() {
         return addon;
     }
 
-    public void setAddon(int addon) {
+    public void setAddon(boolean addon) {
         this.addon = addon;
     }
 
@@ -81,4 +81,6 @@ public class Torneio {
     public void setJogadores(List<Jogador> jogadores) {
         this.jogadores = jogadores;
     }
+
+
 }

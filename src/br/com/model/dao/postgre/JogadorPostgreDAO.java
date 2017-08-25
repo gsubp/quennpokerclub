@@ -48,4 +48,9 @@ public class JogadorPostgreDAO extends JogadorDAO{
     public JogadorVO login(String login, String senha) {
         return null;
     }
+
+    @Override
+    public List<JogadorVO> listClassificacao() throws Exception {
+        return null;
+    }
 }
